@@ -1,0 +1,77 @@
+.content-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.section-wrapper {
+    max-width: 800px;
+}
+
+.search-box form {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0;
+    justify-content: center;
+    border-radius: 3px;
+    border: 1px solid black;
+}
+
+
+.search-box button,
+.search-box input {
+    border: 1px solid;
+    font-size: large;
+    padding: 5px;
+}
+
+.search-box button {
+    background-color: var(--primary-color);
+}
+
+.game-details-wrapper {
+    margin-top: 2rem;
+}
+
+.game-button {
+    margin-top: 2rem;
+}
+
+.game-button a {
+    display: block;
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.game-button .game-quit-button {
+    color: red;
+    background-color: rgba(216, 165, 165, 0.521);
+}
+
+.game-button .game-join-button {
+    color: green;
+    background-color: rgba(186, 224, 186, 0.459);
+
+}
+
+.game-button .game-quit-button:hover {
+    background-color: rgb(196, 140, 140);
+}
+
+.game-button .game-join-button:hover {
+    background-color: rgb(185, 204, 185);
+}
+
+.game-players {
+    margin-top: 2rem;
+    border: 1px solid black;
+    padding: 10px;
+
+}
+
+.game-players ol {
+    margin-left: 1rem;
+}

@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/tables.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="content-section">
+    <div class="content-section-wrapper">
+        <div class="add-games-block">
+            <a href="{{ url_for('new_game') }}">New Game</a>
+            <a href="{{ url_for('game_details') }}">Join Game</a>
+        </div>
+
+        <table class="games-table">
+            <thead>
+                <th class="game-date">
+                    Date
+                </th>
+
+                <th class="game-time">
+                    Time
+                </th>
+
+                <th class="game-name">
+                    Name
+                </th>
+
+                <th class="game-field">
+                    Field
+                </th>
+
+            </thead>
+
+            <tbody>
+                {% for game in games %}
+                <tr class="game-row">
+                    <td class="game-date">
+                        <a href="{{ url_for('game_details', id=game.id) }}" class="game-detais" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+
+                            {{ game.date.day }}/{{ game.date.month }}<span
+                                class="game-date-year">/{{ game.date.year }}</span>
+                    </td>
+
+                    <td class="game-time">
+                        {{ game.time.hour }}:{{ game.time.minute }}
+                    </td>
+
+                    <td class="game-name">
+                        {{ game.name }}
+                    </td>
+
+                    <td class="game-field">
+                        {{ game.field }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+</div>
+{% endblock %}

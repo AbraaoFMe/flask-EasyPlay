@@ -1,0 +1,88 @@
+.content-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+table {
+    border: 1px solid var(--primary-color-darker);
+    border-collapse: collapse;
+
+    border-radius: 3px;
+    /* table-layout: fixed; */
+}
+
+th {
+    text-align: left;
+    background-color: var(--primary-color);
+}
+
+th, td {
+    border: 1px solid var(--primary-color-darker);
+    font-size: larger;
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: var(--primary-color-lighter);
+}
+.game-field,
+.game-name {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media(max-width: 650px) {
+    .game-date-year {
+        display: none;
+    }
+}
+
+@media(max-width: 600px) {
+    .game-name,
+    .game-field
+    {
+        max-width: 100px;
+    }
+}
+
+@media(max-width: 389px) {
+    .game-time {
+        display: none;
+    }
+}
+
+.add-games-block {
+    display: flex;
+    justify-content: center;
+}
+
+.add-games-block a {
+    border: 1px solid var(--primary-color-darker);
+    border-radius: 5px;
+    padding: 10px;
+
+    background-color: white;
+    color: var(--primary-color-darker);
+
+    text-decoration: none;
+
+    margin: 5px;
+}
+
+.add-games-block a:hover {
+    background: var(--primary-color-darker);
+    color: white;
+} 
+
+.game-details {
+    color: var(--primary-color-darker);
+    margin-right: 3px
+}
+
+.game-date {
+    display: flex;
+    flex-wrap: nowrap;
+}

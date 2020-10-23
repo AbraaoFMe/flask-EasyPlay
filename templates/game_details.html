@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/game_details.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="content-section">
+    <div class="section-wrapper">
+        <div class="search-box">
+            <form action="" method="GET">
+                <input type="text" placeholder="Type here the id of the game" value="{{ game.id }}">
+                <button type="submit" class="fas fa-search"></button>
+            </form>
+        </div>
+
+        <div class="game-details-wrapper">
+
+            {% if game %}
+            <div class="game-details">
+                <!-- Name -->
+                <div class="game-detail game-name">
+                    Name: {{ game.name }}
+                </div>
+
+                <!-- Description -->
+                <div class="game-detail game-description">
+                    Description: {{ game.description }}
+                </div>
+
+                <!-- Field -->
+                <div class="game-detail game-field">
+                    Field: {{ game.field }}
+                </div>
+
+                <!-- Date and Time -->
+                <div class="game-detail game-datetime">
+                    Date and Time: {{ game.date.day }}/{{ game.date.month }}/{{ game.date.year }} -
+                    {{ game.time.hour }}:{{ game.time.minute }}
+                </div>
+            </div>
+
+            <div class="game-button">
+                {% if current_user not in game.players %}
+                <a href="{{ url_for('game_join', id=game.id) }}" class="game-join-button">JOIN</a>
+                {% else %}
+                <a href="{{ url_for('game_quit', id=game.id) }}" class="game-quit-button">QUIT</a>
+                {% endif %}
+            </div>
+
+            <div class="game-players">
+                <ol>
+                    {% for player in game.players %}
+                    <li>{{ player.name }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        {% else %}
+        <span>Type in a valid id</span>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+    // Query the form
+    const form = document.querySelector('form')
+
+    form.onsubmit = (e) => {
+        e.preventDefault()
+        const idValue = form.querySelector('input').value
+
+        if (idValue) {
+            window.location.replace(`${window.location.origin}/games/${idValue}`)
+        }
+    }
+</script>
+{% endblock %}

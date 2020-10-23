@@ -1,0 +1,7 @@
+:root {
+    --primary-color: rgb(166, 209, 196);
+    --primary-color-darker: rgb(123, 156, 146);
+    --primary-color-lighter: rgb(237, 252, 247);
+    --primary-color-bluer: rgb(20, 143, 214);
+    --soft-gray: rgba(0, 0, 0, 0.322);
+}

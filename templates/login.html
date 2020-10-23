@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/form.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="content-section">
+    <form action="{{ url_for('user_login') }}" method="POST" novalidate>
+        {{ form.hidden_tag() }}
+
+        <fieldset class="form-group">
+            <legend class="">Login</legend>
+
+            <!-- Email -->
+            <div class="form-item">
+                {{ form.email.label(class="") }}
+
+                {% if form.email.errors %}
+                {{ form.email(class="") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                {% else %}
+                {{ form.email(class="") }}
+                {% endif %}
+            </div>
+
+            <!-- Password -->
+            <div class="form-item">
+                {{ form.password.label(class="") }}
+
+                {% if form.password.errors %}
+                {{ form.password(class="") }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                {% else %}
+                {{ form.password(class="") }}
+                {% endif %}
+            </div>
+        </fieldset>
+
+        <!-- Submit -->
+        <div class="form-item">
+            {{form.submit(class="")}}
+        </div>
+    </form>
+
+    <!-- Already have an account -->
+    <div class="alternative-block">
+        <small class="">
+            Dont Have An Account Yet? <a href="{{ url_for('user_register') }}" class="">Sign Up</a>
+        </small>
+    </div>
+</div>
+{% endblock %}

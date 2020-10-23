@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/new_game.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/form.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="content-section">
+    <form action="{{ url_for('new_game') }}" method="POST" novalidate>
+        {{ form.hidden_tag() }}
+
+        <fieldset class="form-group">
+            <legend class="">New Game</legend>
+
+            <!-- Name -->
+            <div class="form-item">
+                {{ form.name.label(class="") }}
+
+                {% if form.name.errors %}
+                {{ form.name(class="") }}
+                <div class="invalid-feedback">
+                    {% for error in form.name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                {% else %}
+                {{ form.name(class="") }}
+                {% endif %}
+            </div>
+
+            <!-- Description -->
+            <div class="form-item">
+                {{ form.description.label(class="") }}
+
+                {% if form.description.errors %}
+                {{ form.description(class="") }}
+                <div class="invalid-feedback">
+                    {% for error in form.description.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                {% else %}
+                {{ form.description(class="") }}
+                {% endif %}
+            </div>
+
+            <div class="form-row form-date-time">
+                <!-- Date -->
+                <div class="form-item">
+                    {{ form.date.label(class="") }}
+
+                    <input type="date" name="date" id="date" required>
+
+                    {% if form.date.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.date.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+
+                    {% else %}
+                    {% endif %}
+                </div>
+
+                <!-- Time -->
+                <div class="form-item">
+                    {{ form.time.label(class="") }}
+
+                    <input type="time" name="time" id="time" required>
+
+                    {% if form.time.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.time.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Field -->
+            <div class="form-item">
+                {{ form.field.label(class="") }}
+
+                {% if form.field.errors %}
+                {{ form.field(class="") }}
+                <div class="invalid-feedback">
+                    {% for error in form.field.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                {% else %}
+                {{ form.field(class="") }}
+                {% endif %}
+            </div>
+
+        </fieldset>
+
+        <!-- Submit -->
+        <div class="form-item">
+            {{form.submit(class="")}}
+        </div>
+    </form>
+
+    <!-- Already have an account -->
+    <div class="alternative-block">
+        <small class="">
+            Do you want to join a game? <a href="{{ url_for('game_details') }}" class="">Join a Game</a>
+        </small>
+    </div>
+</div>
+{% endblock %}
